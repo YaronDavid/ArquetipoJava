@@ -10,6 +10,7 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
@@ -107,7 +108,8 @@ class UserServiceTest
    * {@link com.axity.office.service.impl.UserServiceImpl#create(com.axity.office.commons.dto.UserDto)}.
    */
   @Test
-  void createUser(){
+  @DisplayName("Method to create a user")
+  void testcreateUser(){
     var list = new ArrayList<RoleDto>();
     list.add(creatRole(1));
     list.add(creatRole(2));
@@ -136,7 +138,8 @@ class UserServiceTest
    */
   
   @Test
-  void validateEmail(){
+  @DisplayName("Method to validate email exist and get error")
+  void testValidateEmail(){
     var list = new ArrayList<RoleDto>();
     list.add(creatRole(1));
     list.add(creatRole(2));
@@ -156,11 +159,12 @@ class UserServiceTest
   }
   
   /**
-   * Method to validate email exist and get error
+   * Method to validate username exist and get error
    */
   
   @Test
-  void validateUsername() {
+  @DisplayName( "Method to validate username exist and get error")
+  void testValidateUsername() {
 	  var list = new ArrayList<RoleDto>();
 	  list.add(creatRole(1));
 	  list.add(creatRole(2));
@@ -183,7 +187,8 @@ class UserServiceTest
    */
   
   @Test
-  void validateRole() {    
+  @DisplayName("Method to validate role is on DB and get an error")
+  void testValidateRole() {    
 	  var list = new ArrayList<RoleDto>();
 	  list.add(creatRole(1));
 	  list.add(creatRole(5));
@@ -206,7 +211,8 @@ class UserServiceTest
    */
   
   @Test
-  void validateRolesExist() {    
+  @DisplayName("Method to validate user roles is not null")
+  void testValidateRolesExist() {    
 	  var dto = new UserDto();
 	  dto.setUsername("usuario.yo.ejemplo");
 	  dto.setEmail("ejemplo@company.yo");
@@ -225,7 +231,8 @@ class UserServiceTest
    */
   
   @Test
-  void validateRolesIsNotEmpty() {    
+  @DisplayName("Method to validate user had roles")
+  void testValidateRolesIsNotEmpty() {    
 	  var list = new ArrayList<RoleDto>();
 	  var dto = new UserDto();
 	  dto.setUsername("usuario.yo.ejemplo");
