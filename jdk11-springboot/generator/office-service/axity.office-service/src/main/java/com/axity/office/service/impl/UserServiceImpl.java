@@ -113,6 +113,13 @@ public class UserServiceImpl implements UserService
         
         return genericResponse;
     }
+    if(dto.getRoles() == null || dto.getRoles().isEmpty() ) {
+    	GenericResponseDto<UserDto> genericResponse = new GenericResponseDto<>();
+
+        genericResponse.setHeader(new HeaderDto(15,"Error. El usuario debe contener por lo menos 1 rol"));
+        
+        return genericResponse;
+    }
    
 
     UserDO entity = new UserDO();

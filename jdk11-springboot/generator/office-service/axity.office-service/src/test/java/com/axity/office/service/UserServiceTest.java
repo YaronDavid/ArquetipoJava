@@ -177,6 +177,45 @@ class UserServiceTest
 	  assertEquals( 13, response.getHeader().getCode() );
 	  assertNull(response.getBody());
   }
+  
+  /**
+   * Method to validate user roles is not null
+   */
+  
+  @Test
+  void validateRolesExist() {    
+	  var dto = new UserDto();
+	  dto.setUsername("usuario.yo.ejemplo");
+	  dto.setEmail("ejemplo@company.yo");
+	  dto.setName("User");
+	  dto.setLastName("Name");
+	  
+
+	  var response = this.userService.create( dto );
+	  assertNotNull( response );
+	  assertEquals( 15, response.getHeader().getCode() );
+	  assertNull(response.getBody());
+  }
+  
+  /**
+   * Method to validate user had roles
+   */
+  
+  @Test
+  void validateRolesIsNotEmpty() {    
+	  var list = new ArrayList<RoleDto>();
+	  var dto = new UserDto();
+	  dto.setUsername("usuario.yo.ejemplo");
+	  dto.setEmail("ejemplo@company.yo");
+	  dto.setName("User");
+	  dto.setLastName("Name");
+	  dto.setRoles(list);
+
+	  var response = this.userService.create( dto );
+	  assertNotNull( response );
+	  assertEquals( 15, response.getHeader().getCode() );
+	  assertNull(response.getBody());
+  }
 
   /**
    * Method to validate update
