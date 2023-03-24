@@ -179,6 +179,29 @@ class UserServiceTest
   }
   
   /**
+   * Method to validate role is on DB
+   */
+  
+  @Test
+  void validateRole() {    
+	  var list = new ArrayList<RoleDto>();
+	  list.add(creatRole(1));
+	  list.add(creatRole(5));
+	  var dto = new UserDto();
+	  dto.setUsername("usuario.yo.ejemplo");
+	  dto.setEmail("ejemplo@company.yo");
+	  dto.setName("User");
+	  dto.setLastName("Name");
+	  dto.setRoles(list);
+
+	  var response = this.userService.create( dto );
+	  assertNotNull( response );
+	  assertEquals( 14, response.getHeader().getCode() );
+	  assertNull(response.getBody());
+  }
+  
+  
+  /**
    * Method to validate user roles is not null
    */
   

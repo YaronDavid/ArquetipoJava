@@ -113,12 +113,23 @@ public class UserServiceImpl implements UserService
         
         return genericResponse;
     }
+    
     if(dto.getRoles() == null || dto.getRoles().isEmpty() ) {
     	GenericResponseDto<UserDto> genericResponse = new GenericResponseDto<>();
 
         genericResponse.setHeader(new HeaderDto(15,"Error. El usuario debe contener por lo menos 1 rol"));
         
         return genericResponse;
+    }
+    
+    for(var role: dto.getRoles()) {
+    	if(role.getId()>4||role.getId()<1) {
+    		GenericResponseDto<UserDto> genericResponse = new GenericResponseDto<>();
+
+            genericResponse.setHeader(new HeaderDto(14,"Error. El rol no existe"));
+            
+            return genericResponse;
+    	}
     }
    
 
